@@ -35,7 +35,7 @@ const Register: NextPage = () => {
         setShowModal={setShowModal}
       />
       <div className="mx-auto max-w-4xl">
-        <h2 className={titleFont text-white text-center text-4xl md:text-5xl}>
+        <h2 className={"titleFont text-white text-center text-4xl md:text-5xl"}>
           Register
         </h2>
 
