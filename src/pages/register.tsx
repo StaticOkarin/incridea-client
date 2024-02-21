@@ -35,7 +35,7 @@ const Register: NextPage = () => {
         setShowModal={setShowModal}
       />
       <div className="mx-auto max-w-4xl">
-        <h2 className={`titleFont text-white text-center text-4xl md:text-5xl`}>
+        <h2 className={titleFont text-white text-center text-4xl md:text-5xl}>
           Register
         </h2>
 
@@ -43,6 +43,8 @@ const Register: NextPage = () => {
           Before you roll the dice, read through the list of T&C, and register
           yourself for the fest by clicking the button below.
         </h5>
+
+
         <div className="bodyFont md:px-10 px-5 md:mt-8 mt-6 max-w-7xl mx-auto bg-white/20 rounded-sm md:py-7 py-4">
           <h2 className="font-semibold md:text-2xl text-base">
             Terms and Conditions
@@ -55,14 +57,19 @@ const Register: NextPage = () => {
             <li>
               {" "}
               Students of NMAM Institute of Technology, who pays{" "}
-              <span className="font-semibold">₹256</span> will have access to
-              all events and pronites
+              <span className="font-semibold">
+                Γé╣250 (+ 2% platform fee)
+              </span>{" "}
+              will have access to all events and pronites
             </li>
             <li>
               {" "}
               Students of external engineering and sister Nitte colleges, who
-              pays <span className="font-semibold">₹356</span> will have access
-              to all events and pronites.
+              pays{" "}
+              <span className="font-semibold">
+                Γé╣350 (+ 2% platform fee)
+              </span>{" "}
+              will have access to all events and pronites.
             </li>
           </ol>
           <div className="mt-2">
