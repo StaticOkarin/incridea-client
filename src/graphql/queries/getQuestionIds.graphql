@@ -1,0 +1,28 @@
+query GetQuestionIds(
+  $eventId: Int!
+  $roundId: Int!
+  $teamId: Int = -1
+  $password: String!
+  $type: String = "participant"
+) {
+  getQuizDataByEventRound(
+    eventId: $eventId
+    roundId: $roundId
+    teamId: $teamId
+    password: $password
+    type: $type
+  ) {
+    ... on QueryGetQuizDataByEventRoundSuccess {
+      __typename
+      data {
+        questions {
+          id
+        }
+      }
+    }
+    ... on Error {
+      __typename
+      message
+    }
+  }
+}

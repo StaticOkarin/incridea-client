@@ -6,7 +6,7 @@ import { FC } from "react";
 import { RegisterdEventsDocument } from "@/src/generated/generated";
 import { MdOutlineExplore } from "react-icons/md";
 import { FaExternalLinkAlt } from "react-icons/fa";
-
+import AttemptQuizModal from "./AttemptQuizModal";
 const UserEvents: FC<{
   userId: string;
 }> = ({ userId }) => {
@@ -63,14 +63,51 @@ const UserEvents: FC<{
                 <div className="pb-5 flex flex-wrap justify-center items-stretch gap-5">
                   {events?.registeredEvents.__typename ===
                     "QueryRegisteredEventsSuccess" &&
-                    events?.registeredEvents.data?.map((event, i) => (
-                      <EventCard
-                        key={i}
-                        teams={event.teams}
-                        event={event}
-                        userId={userId}
-                      />
-                    ))}
+                    events?.registeredEvents.data?.map((event, i) => {
+                      console.log(event);
+                      return (
+                        <>
+                          <EventCard
+                            key={i}
+                            teams={event.teams}
+                            event={event}
+                            userId={userId}
+                          />
+                          {event.rounds.find(
+                            (round) =>
+                              round.Quiz?.id && round.Quiz.allowAttempts
+                          ) && (
+                            <div>
+                              {/* href={`/quiz?eventId=${event.id}&teamId=${ */}
+                              {/* //     event.teams.find(
+                            //       (team) =>
+                            //         team.members.findIndex(
+                            //           (member) => member.user.id === userId
+                            //         ) !== -1
+                            //     )?.id
+                            //   }`}
+                            // >Attempt Quiz */}
+                              <AttemptQuizModal
+                                eventId={Number(event.id)}
+                                roundNo={
+                                  event.rounds.find(
+                                    (round) => round.Quiz?.allowAttempts == true
+                                  )?.roundNo || -1
+                                }
+                                teamId={
+                                  event.teams.find(
+                                    (team) =>
+                                      team.members.findIndex(
+                                        (member) => member.user.id === userId
+                                      ) !== -1
+                                  )?.id || ""
+                                }
+                              />
+                            </div>
+                          )}
+                        </>
+                      );
+                    })}
                 </div>
               </div>
             </div>
